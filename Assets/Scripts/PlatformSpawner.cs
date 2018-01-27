@@ -22,7 +22,7 @@ public class PlatformSpawner : MonoBehaviour
 
 
 
-    const float _overlappingCircleSize = 0.2f;
+    const float _overlappingCircleSize = 0.5f;
     float _lastClickTime;
     List<GameObject> _platforms = new List<GameObject>();
     GameObject _draggedObject;
@@ -32,8 +32,21 @@ public class PlatformSpawner : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(Input.GetButtonDown("Fire2"))
+        {
+            DragModeV.Value = (int)DragMode.Rotation;
+            //Debug.Log("fire2 down");
+        }
+
+        if(Input.GetButtonUp("Fire2"))
+        {
+            DragModeV.Value = (int)DragMode.Position;
+            //Debug.Log("fire2 up");
+        }
+
         if (Input.GetButtonDown("Fire1"))
         {
+            //Debug.Log("fire1 down");
             //Debug.Log("Time" + (Time.time - _lastClickTime));
             if ((Time.time - _lastClickTime) < MaxDoubleTapTime.Value)
             {
@@ -119,13 +132,12 @@ public class PlatformSpawner : MonoBehaviour
 
     Collider2D GetPlatformColliderOnPoint(Vector3 targetPos)
     {
-        Collider2D col = Physics2D.OverlapCircle(targetPos, _overlappingCircleSize);
-        if (col != null && col.CompareTag("Platform"))
-        {
-            return col;
-        }
 
-        return null;
+        List<Collider2D> list = Physics2D.OverlapCircleAll(targetPos, _overlappingCircleSize)
+                 .Where(col => col != null && col.CompareTag("Platform"))
+                                         .Select(col => col).ToList();
+
+        return list.Count() == 0 ? null : list.First();
     }
 
     void CreatePlatformAtPoint(Vector3 targetPos)
