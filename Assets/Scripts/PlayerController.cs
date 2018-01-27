@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     // Publics
     public FloatVariable BoatSpeed;
 
-
     // Privates
     Rigidbody2D Body;
     PlayerState state;
@@ -28,7 +27,6 @@ public class PlayerController : MonoBehaviour
         Body.velocity = new Vector2(-BoatSpeed.Value, 0);
 
     }
-
 
     public void OnTouchedBorder()
     {
