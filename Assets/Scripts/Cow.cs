@@ -41,8 +41,9 @@ public class Cow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Vector3 targetPos = transform.Find("ProjectilePosition").gameObject.transform.position;
 
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(direction.x, direction.y, 0.0f), transform.rotation);
+        GameObject wave = Instantiate(Wave, targetPos, transform.rotation);
         Vector2 velocity = direction * ProjectileSpeed.Value;
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
