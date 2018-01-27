@@ -11,6 +11,6 @@ public class Beacon : MonoBehaviour
         Vector2 waveDirection = rb.velocity;
         Vector2 reflect = Vector2.Reflect(waveDirection, transform.TransformDirection(Vector2.up));
         rb.velocity = reflect;
-        Debug.Log("Kurwa triggered");
+        //Debug.Log("Kurwa triggered");
     }
 }
