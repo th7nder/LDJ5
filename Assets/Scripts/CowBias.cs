@@ -10,7 +10,7 @@ public class CowBias : MonoBehaviour {
     public FloatVariable ProjectileSpeed;
     public string FirstWord;
     Vector2 direction;
-    public enum Direction { left, right, up, down };
+    public enum Direction { leftUp, rightDown, rightUp, leftDown };
     public Direction selectedDirection;
 
     private TextMesh text;
@@ -24,19 +24,19 @@ public class CowBias : MonoBehaviour {
     {
         switch (selectedDirection)
         {
-            case Direction.left:
+            case Direction.leftUp:
                 SendLeftUp();
                 break;
 
-            case Direction.right:
+            case Direction.rightDown:
                 SendRightDown();
                 break;
 
-            case Direction.up:
+            case Direction.rightUp:
                 SendRightUp();
                 break;
 
-            case Direction.down:
+            case Direction.leftDown:
                 SendLeftDown();
                 break;
         }
