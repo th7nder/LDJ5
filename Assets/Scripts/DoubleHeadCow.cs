@@ -20,10 +20,10 @@ public class DoubleHeadCow : MonoBehaviour {
     {
         GameObject waveUp = (GameObject)Instantiate(Wave, transform.position + new Vector3(Direction, 0.5f, 0.0f), transform.rotation);
         GameObject waveDown = (GameObject)Instantiate(Wave, transform.position + new Vector3(Direction, -0.5f, 0.0f), transform.rotation);
-        float length = 30.0f;
+        float length = 10.0f;
         Vector2 velocityUp = new Vector2(Direction, 1.0f) * length;
         Vector2 velocityDown = new Vector2(Direction, -1.0f) * length;
-
+      
         Rigidbody2D rbUp = waveUp.GetComponent<Rigidbody2D>();
         Rigidbody2D rbDown = waveDown.GetComponent<Rigidbody2D>();
         rbUp.velocity = velocityUp / 2;

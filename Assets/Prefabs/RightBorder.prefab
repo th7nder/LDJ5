@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61380963782833356}
   - component: {fileID: 114072547097397790}
   - component: {fileID: 50439721202973100}
+  - component: {fileID: 114181300313210480}
   m_Layer: 0
   m_Name: RightBorder
   m_TagString: Untagged
@@ -115,6 +116,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114181300313210480
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424451945366914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63faec241e4ff49b2a1fc480ecb48bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212634391043053148
 SpriteRenderer:
   m_ObjectHideFlags: 1
