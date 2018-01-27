@@ -41,6 +41,8 @@ public class Cow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Wave")) return;
+        Debug.Log("WAVE KURWA");
         Vector3 targetPos = transform.Find("ProjectilePosition").gameObject.transform.position;
 
         GameObject wave = Instantiate(Wave, targetPos, transform.rotation);
