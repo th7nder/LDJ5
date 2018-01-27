@@ -9,74 +9,64 @@ public class CowBias : MonoBehaviour {
     public GameObject Wave;
     public FloatVariable ProjectileSpeed;
     public string FirstWord;
-    Vector2 direction;
     public enum Direction { leftUp, rightDown, rightUp, leftDown };
     public Direction selectedDirection;
+
+
+    Vector3 _spawnPosition;
+    Vector2 _dirVelocity;
 
     private TextMesh text;
 
     private void Start()
     {
         text = GetComponentInChildren<TextMesh>();
+
+
+        GameObject pp = transform.Find("ProjectilePosition").gameObject;
+
+        switch (selectedDirection)
+        {
+
+            case Direction.rightUp:
+                _dirVelocity = new Vector2(1.0f, 1.0f);
+                break;
+
+            case Direction.rightDown:
+                _dirVelocity = new Vector2(1.0f, -1.0f);
+                pp.transform.localPosition = new Vector3(pp.transform.localPosition.x, -pp.transform.localPosition.y, pp.transform.localPosition.z);
+                break;
+
+            case Direction.leftUp:
+                _dirVelocity = new Vector2(-1.0f, 1.0f);
+                pp.transform.localPosition = new Vector3(-pp.transform.localPosition.x, pp.transform.localPosition.y, pp.transform.localPosition.z);
+                break;
+
+
+            case Direction.leftDown:
+                _dirVelocity = new Vector2(-1.0f, -1.0f);
+                pp.transform.localPosition = new Vector3(-pp.transform.localPosition.x, -pp.transform.localPosition.y, pp.transform.localPosition.z);
+                break;
+            
+        }
+
+        _dirVelocity *= ProjectileSpeed.Value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (selectedDirection)
-        {
-            case Direction.leftUp:
-                SendLeftUp();
-                break;
-
-            case Direction.rightDown:
-                SendRightDown();
-                break;
-
-            case Direction.rightUp:
-                SendRightUp();
-                break;
-
-            case Direction.leftDown:
-                SendLeftDown();
-                break;
-        }
+        Send();
         Destroy(collision.gameObject);
         text.text = FirstWord;
     }
 
-    void SendLeftUp()
+    void Send()
     {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, 1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(-1.0f, 1.0f) * ProjectileSpeed.Value;
-
+        GameObject pp = transform.Find("ProjectilePosition").gameObject;
+        GameObject wave = Instantiate(Wave, pp.transform.position, transform.rotation);
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
+        rb.velocity = _dirVelocity;
+
     }
 
-    void SendRightUp()
-    {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, 1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(1.0f, 1.0f) * ProjectileSpeed.Value;
-
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
-    }
-
-    void SendLeftDown()
-    {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, -1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(-1.0f, -1.0f) * ProjectileSpeed.Value;
-
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
-    }
-
-    void SendRightDown()
-    {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, -1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(1.0f, -1.0f) * ProjectileSpeed.Value;
-
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
-    }
 }

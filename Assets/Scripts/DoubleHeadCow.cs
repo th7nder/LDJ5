@@ -10,78 +10,95 @@ public class DoubleHeadCow : MonoBehaviour {
     public FloatVariable ProjectileSpeed;
     public string FirstWord;
     public string SecondWord;
-    Vector2 direction;
-    public enum Direction { left, right, up, down };
+    public enum Direction { leftTop, rightTop, leftDown, rightDown };
     public Direction selectedDirection;
 
     private TextMesh text;
 
+    Vector2 _dirTopVelocity;
+    Vector2 _dirSideVelocity;
+    Vector3 _spawnPointTop;
+    Vector3 _spawnPointSide;
+
     private void Start()
     {
         text = GetComponentInChildren<TextMesh>();
+
+
+        GameObject top = transform.Find("TopPosition").gameObject;
+        GameObject right = transform.Find("RightPosition").gameObject;
+
+
+        switch (selectedDirection)
+        {
+
+            case Direction.rightTop:
+                _dirSideVelocity = new Vector2(1.0f, 0.0f);
+                _dirTopVelocity = new Vector2(0.0f, 1.0f);
+
+                _spawnPointTop = top.transform.position;
+                _spawnPointSide = right.transform.position;
+                break;
+
+            case Direction.rightDown:
+                _dirSideVelocity = new Vector2(1.0f, 0.0f);
+                _dirTopVelocity = new Vector2(0.0f, -1.0f);
+
+                top.transform.localPosition = new Vector3(top.transform.localPosition.x, -top.transform.localPosition.y, top.transform.localPosition.y);
+                _spawnPointTop = top.transform.position;
+                _spawnPointSide = right.transform.position;
+
+                break;
+
+            case Direction.leftTop:
+                _dirSideVelocity = new Vector2(-1.0f, 0.0f);
+                _dirTopVelocity = new Vector2(0.0f, 1.0f);
+
+                right.transform.localPosition = new Vector3(-right.transform.localPosition.x, right.transform.localPosition.y, right.transform.localPosition.y);
+                _spawnPointTop = top.transform.position;
+                _spawnPointSide = right.transform.position;
+
+                break;
+
+            case Direction.leftDown:
+                _dirSideVelocity = new Vector2(-1.0f, 0.0f);
+                _dirTopVelocity = new Vector2(0.0f, -1.0f);
+                top.transform.localPosition = new Vector3(top.transform.localPosition.x, -top.transform.localPosition.y, top.transform.localPosition.y);
+                _spawnPointTop = top.transform.position;
+
+                right.transform.localPosition = new Vector3(-right.transform.localPosition.x, right.transform.localPosition.y, right.transform.localPosition.y);
+                _spawnPointSide = right.transform.position;
+
+
+                break;
+
+        }
+
+        _dirSideVelocity *= ProjectileSpeed.Value;
+        _dirTopVelocity *= ProjectileSpeed.Value;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (selectedDirection)
-        {
-            case Direction.left:
-                SendLeftUp();
-                SendLeftDown();
-                break;
-
-            case Direction.right:
-                SendRightUp();
-                SendRightDown();
-                break;
-
-            case Direction.up:
-                SendRightUp();
-                SendLeftUp();
-                break;
-
-            case Direction.down:
-                SendRightDown();
-                SendLeftDown();
-                break;
-        }
+        Send();
         Destroy(collision.gameObject);
         text.text = FirstWord + " " + SecondWord;
+        Destroy(collision.gameObject);
     }
 
-    void SendLeftUp()
+    void Send()
     {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, 1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(-1.0f, 1.0f) * ProjectileSpeed.Value;
 
+
+        GameObject wave = Instantiate(Wave, _spawnPointTop, transform.rotation);
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
-    }
+        rb.velocity = _dirTopVelocity;
 
-    void SendRightUp()
-    {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, 1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(1.0f, 1.0f) * ProjectileSpeed.Value;
+        GameObject waveSide = Instantiate(Wave, _spawnPointSide, transform.rotation);
+        rb = waveSide.GetComponent<Rigidbody2D>();
+        rb.velocity = _dirSideVelocity;
 
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
-    }
 
-    void SendLeftDown()
-    {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, -1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(-1.0f, -1.0f) * ProjectileSpeed.Value;
 
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
-    }
-
-    void SendRightDown()
-    {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, -1.0f, 0.0f), transform.rotation);
-        Vector2 velocity = new Vector2(1.0f, -1.0f) * ProjectileSpeed.Value;
-
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
     }
 }

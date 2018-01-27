@@ -9,17 +9,17 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1131035128829526}
+  m_RootGameObject: {fileID: 1053760578597244}
   m_IsPrefabParent: 1
---- !u!1 &1131035128829526
+--- !u!1 &1053760578597244
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4121760291084604}
-  - component: {fileID: 114076334344238600}
+  - component: {fileID: 4062895278987614}
+  - component: {fileID: 114349556546347598}
   m_Layer: 0
   m_Name: StartingCow
   m_TagString: Untagged
@@ -27,15 +27,15 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1210282822509056
+--- !u!1 &1188791708437666
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4353971226744870}
-  - component: {fileID: 212546917956095478}
+  - component: {fileID: 4686292695184134}
+  - component: {fileID: 212119699040907548}
   m_Layer: 0
   m_Name: StartingCowImage
   m_TagString: Untagged
@@ -43,39 +43,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4121760291084604
+--- !u!4 &4062895278987614
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1131035128829526}
+  m_GameObject: {fileID: 1053760578597244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4353971226744870}
+  - {fileID: 4686292695184134}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4353971226744870
+--- !u!4 &4686292695184134
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1210282822509056}
+  m_GameObject: {fileID: 1188791708437666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children: []
-  m_Father: {fileID: 4121760291084604}
+  m_Father: {fileID: 4062895278987614}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114076334344238600
+--- !u!114 &114349556546347598
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1131035128829526}
+  m_GameObject: {fileID: 1053760578597244}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c6e83fcb7aa1f2418f1e2ce1edd21ac, type: 3}
@@ -84,12 +84,12 @@ MonoBehaviour:
   Wave: {fileID: 1669480032542142, guid: 3212f50645c2c4148b771bca5b44d8e8, type: 2}
   ProjectileSpeed: {fileID: 11400000, guid: 16074d17525914f4998aa4d0167b8190, type: 2}
   selectedDirection: 1
---- !u!212 &212546917956095478
+--- !u!212 &212119699040907548
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1210282822509056}
+  m_GameObject: {fileID: 1188791708437666}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
