@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4262054502457192, guid: 23a75c19188db43d68b30d8a0f140d68, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23a75c19188db43d68b30d8a0f140d68, type: 2}
@@ -215,7 +215,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &902506676
 Prefab:
@@ -254,12 +254,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4582095762862850, guid: 0fb7f5dc9d7c14b61bf463f430869954, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0fb7f5dc9d7c14b61bf463f430869954, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &935958846
+--- !u!1001 &910259911
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -268,11 +268,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4218183142869050, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 4.37
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218183142869050, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218183142869050, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -296,20 +296,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4218183142869050, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4331581530574300, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.11
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4331581530574300, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114780271182903352, guid: 21c9d4f34dd9748cf9bb599564eb608f,
-        type: 2}
-      propertyPath: selectedDirection
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21c9d4f34dd9748cf9bb599564eb608f, type: 2}
@@ -432,7 +423,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4062895278987614, guid: 795b48985660b42299fe71ced61d047f, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 795b48985660b42299fe71ced61d047f, type: 2}
@@ -474,7 +465,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4119250849714680, guid: 262ed8877518b4190b1b0ecbf9fd4cce, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 262ed8877518b4190b1b0ecbf9fd4cce, type: 2}
@@ -516,7 +507,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4391743362032364, guid: 8659ecf0e8ede48f0b0ed60885f25978, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8659ecf0e8ede48f0b0ed60885f25978, type: 2}
@@ -623,7 +614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4331420422827636, guid: 7ed2758e2a58f406bb72b8fa44499840, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ed2758e2a58f406bb72b8fa44499840, type: 2}
