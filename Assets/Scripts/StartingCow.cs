@@ -45,9 +45,9 @@ public class StartingCow : MonoBehaviour
             Vector2 velocity = direction * ProjectileSpeed.Value;
 
             Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-            rb.velocity = velocity / 2;
+            rb.velocity = velocity;
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
