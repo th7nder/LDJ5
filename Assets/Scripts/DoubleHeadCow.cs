@@ -80,23 +80,24 @@ public class DoubleHeadCow : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Send();
-        Destroy(collision.gameObject);
+       
         text.text = FirstWord + " " + SecondWord;
         Destroy(collision.gameObject);
+
+        Send();
     }
 
     void Send()
     {
-
-
+        
         GameObject wave = Instantiate(Wave, _spawnPointTop, transform.rotation);
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = _dirTopVelocity;
 
         GameObject waveSide = Instantiate(Wave, _spawnPointSide, transform.rotation);
-        rb = waveSide.GetComponent<Rigidbody2D>();
-        rb.velocity = _dirSideVelocity;
+
+        Rigidbody2D rbSide = waveSide.GetComponent<Rigidbody2D>();
+        rbSide.velocity = _dirSideVelocity;
 
 
 
