@@ -20,7 +20,7 @@ public class WaveSpawner : MonoBehaviour {
         Vector2 velocity = new Vector2(-Mathf.Cos(radAngle) * length, -Mathf.Sin(radAngle) * length);
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity;
+        rb.velocity = velocity/2;
 
     }
 
