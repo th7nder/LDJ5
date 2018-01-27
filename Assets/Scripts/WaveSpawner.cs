@@ -17,13 +17,12 @@ public class WaveSpawner : MonoBehaviour {
 
         Debug.Log(angle);
 
-
         float radAngle = angle * Mathf.Deg2Rad;
         float length = 30.0f;
         Vector2 velocity = new Vector2(-Mathf.Cos(radAngle) * length, -Mathf.Sin(radAngle) * length);
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity;
+        rb.velocity = velocity/2;
 
     }
 
