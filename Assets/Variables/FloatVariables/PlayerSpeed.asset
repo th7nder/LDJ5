@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffa52014f38435599ff232ea5f5d4c, type: 3}
   m_Name: PlayerSpeed
   m_EditorClassIdentifier: 
-  _value: 7.13
+  _value: 2.75
   ValueChangedEvent:
     m_PersistentCalls:
       m_Calls: []

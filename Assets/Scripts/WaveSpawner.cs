@@ -7,14 +7,19 @@ public class WaveSpawner : MonoBehaviour {
     public GameObject Wave;
 
 	void Start () {
-        InvokeRepeating("SpawnWave", 0.0f, 0.3f);
+        StartCoroutine("SpawnWave");
 	}
 
 
-    public void SpawnWave()
+    IEnumerator SpawnWave()
     {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position, Quaternion.identity);
-        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(-10, -10);
+        while(true)
+        {
+            GameObject wave = (GameObject)Instantiate(Wave, transform.position, Quaternion.identity);
+            Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
+            rb.velocity = new Vector2(-10, -10);
+            yield return new WaitForSeconds(0.1f);
+        }
+
     }
 }

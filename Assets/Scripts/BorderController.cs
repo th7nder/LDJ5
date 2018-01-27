@@ -9,6 +9,9 @@ public class BorderController : MonoBehaviour {
     public UnityEvent gameEvent;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameEvent.Invoke();
+        if(collision.CompareTag("Player"))
+        {
+            gameEvent.Invoke();
+        }
     }
 }
