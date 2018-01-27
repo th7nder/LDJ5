@@ -8,7 +8,7 @@ public class DoubleHeadCow : MonoBehaviour {
     public string FirstWord;
     public string SecondWord;
     Vector2 direction;
-    public enum Direction { left, right };
+    public enum Direction { left, right, up, down };
     public Direction selectedDirection;
 
     private TextMesh text;
@@ -16,31 +16,73 @@ public class DoubleHeadCow : MonoBehaviour {
     private void Start()
     {
         text = GetComponentInChildren<TextMesh>();
-        switch (selectedDirection)
-        {
-            case Direction.left:
-                direction = Vector2.left;
-                break;
-
-            case Direction.right:
-                direction = Vector2.right;
-                break;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameObject waveUp = (GameObject)Instantiate(Wave, transform.position + new Vector3(direction.x, 0.5f, 0.0f), transform.rotation);
-        GameObject waveDown = (GameObject)Instantiate(Wave, transform.position + new Vector3(direction.x, -0.5f, 0.0f), transform.rotation);
-        float length = 10.0f;
-        Vector2 velocityUp = new Vector2(direction.x, 1.0f) * length;
-        Vector2 velocityDown = new Vector2(direction.x, -1.0f) * length;
-      
-        Rigidbody2D rbUp = waveUp.GetComponent<Rigidbody2D>();
-        Rigidbody2D rbDown = waveDown.GetComponent<Rigidbody2D>();
-        rbUp.velocity = velocityUp / 2;
-        rbDown.velocity = velocityDown / 2;
+        switch (selectedDirection)
+        {
+            case Direction.left:
+                SendLeftUp();
+                SendLeftDown();
+                break;
+
+            case Direction.right:
+                SendRightUp();
+                SendRightDown();
+                break;
+
+            case Direction.up:
+                SendRightUp();
+                SendLeftUp();
+                break;
+
+            case Direction.down:
+                SendRightDown();
+                SendLeftDown();
+                break;
+        }
         Destroy(collision.gameObject);
         text.text = FirstWord + " " + SecondWord;
+    }
+
+    void SendLeftUp()
+    {
+        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, 1.0f, 0.0f), transform.rotation);
+        float length = 10.0f;
+        Vector2 velocity = new Vector2(-1.0f, 1.0f) * length;
+
+        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
+        rb.velocity = velocity / 2;
+    }
+
+    void SendRightUp()
+    {
+        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, 1.0f, 0.0f), transform.rotation);
+        float length = 10.0f;
+        Vector2 velocity = new Vector2(1.0f, 1.0f) * length;
+
+        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
+        rb.velocity = velocity / 2;
+    }
+
+    void SendLeftDown()
+    {
+        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, -1.0f, 0.0f), transform.rotation);
+        float length = 10.0f;
+        Vector2 velocity = new Vector2(-1.0f, -1.0f) * length;
+
+        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
+        rb.velocity = velocity / 2;
+    }
+
+    void SendRightDown()
+    {
+        GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, -1.0f, 0.0f), transform.rotation);
+        float length = 10.0f;
+        Vector2 velocity = new Vector2(1.0f, -1.0f) * length;
+
+        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
+        rb.velocity = velocity / 2;
     }
 }
