@@ -5,6 +5,15 @@ using UnityEngine;
 public class DoubleHeadCow : MonoBehaviour {
 
     public GameObject Wave;
+    public string FirstWord;
+    public string SecondWord;
+
+    private TextMesh text;
+
+    private void Start()
+    {
+        text = GetComponentInChildren<TextMesh>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,5 +28,6 @@ public class DoubleHeadCow : MonoBehaviour {
         rbUp.velocity = velocityUp / 2;
         rbDown.velocity = velocityDown / 2;
         Destroy(collision.gameObject);
+        text.text = FirstWord + " " + SecondWord;
     }
 }

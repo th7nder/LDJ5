@@ -5,6 +5,13 @@ using UnityEngine;
 public class Cow : MonoBehaviour
 {
     public GameObject Wave;
+    public string Word;
+    private TextMesh text;
+
+    private void Start()
+    {
+        text = GetComponentInChildren<TextMesh>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,5 +22,6 @@ public class Cow : MonoBehaviour
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;
         Destroy(collision.gameObject);
+        text.text = Word;
     }
 }
