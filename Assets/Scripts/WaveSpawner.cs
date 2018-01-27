@@ -18,7 +18,7 @@ public class WaveSpawner : MonoBehaviour {
             GameObject wave = (GameObject)Instantiate(Wave, transform.position, transform.rotation);
             Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
 
-            float angle = (Mathf.PI / 6);
+            float angle = (Mathf.PI / 4);
             float length = 30.0f;
 
             float x = Mathf.Cos(angle) * length;
