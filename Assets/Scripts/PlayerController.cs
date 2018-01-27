@@ -18,28 +18,40 @@ public class PlayerController : MonoBehaviour
     public FloatVariable BoatSpeed;
 
     // Privates
-    Rigidbody2D Body;
-    PlayerState state;
+    Rigidbody2D _body;
+    PlayerState _state;
     void Start()
     {
-        state = PlayerState.Started;
-        Body = GetComponent<Rigidbody2D>();
-        Body.velocity = new Vector2(-BoatSpeed.Value, 0);
+        _state = PlayerState.Started;
+        _body = GetComponent<Rigidbody2D>();
+        _body.velocity = new Vector2(-BoatSpeed.Value, 0);
 
     }
 
     public void OnTouchedBorder()
     {
-        state += 1;
-        if(state != PlayerState.Finished)
+        _state += 1;
+        if(_state != PlayerState.Finished)
         {
-            Body.velocity = -Body.velocity;
+            _body.velocity = -_body.velocity;
         }
         else
         {
-            Body.velocity = new Vector2();
+            _body.velocity = new Vector2();
         }
 
+    }
+
+    public void OnPlayerSpeedChanged()
+    {
+        if(_body.velocity.x < 0)
+        {
+            _body.velocity = new Vector2(-BoatSpeed.Value, 0);
+        }
+        else
+        {
+            _body.velocity = new Vector2(BoatSpeed.Value, 0);
+        }
     }
 
 }

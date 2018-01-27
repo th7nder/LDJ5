@@ -1,32 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour {
 
     public GameObject Wave;
 
-	void Start () {
-        StartCoroutine("SpawnWave");
-	}
-
-
-    IEnumerator SpawnWave()
+    void LaunchWaveAtPos(Vector3 pos)
     {
-        while(true)
+        GameObject wave = (GameObject)Instantiate(Wave, transform.position, transform.rotation);
+
+        float angle = AngleBetweenTwoPoints(Camera.main.WorldToViewportPoint(transform.position), pos);
+        wave.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+
+        float radAngle = angle * Mathf.Deg2Rad;
+        float length = 30.0f;
+        Vector2 velocity = new Vector2(-Mathf.Cos(radAngle) * length, -Mathf.Sin(radAngle) * length);
+
+        Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
+        rb.velocity = velocity;
+
+    }
+
+
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+    }
+
+    private void FixedUpdate()
+    {
+        if(Input.GetButtonDown("Fire1"))
         {
-            GameObject wave = (GameObject)Instantiate(Wave, transform.position, transform.rotation);
-            Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-
-            float angle = (Mathf.PI / 4);
-            float length = 30.0f;
-
-            float x = Mathf.Cos(angle) * length;
-            float y = Mathf.Sin(angle) * length;
-            rb.velocity = new Vector2(-x, -y);
-
-            yield return new WaitForSeconds(0.2f);
+            LaunchWaveAtPos(Camera.main.ScreenToViewportPoint(Input.mousePosition));
         }
-
     }
 }
