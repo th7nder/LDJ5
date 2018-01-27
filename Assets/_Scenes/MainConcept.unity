@@ -142,6 +142,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Platform: {fileID: 1104598151624524, guid: 62001eafd2882844a881727db48100db, type: 2}
   MaxDoubleTapTime: {fileID: 11400000, guid: 69447f3b98e8e4e91a14e46be00c6d21, type: 2}
+  DragModeV: {fileID: 11400000, guid: f5da36a5834564082af5c3d167a6fb6c, type: 2}
+  MaxDragRotateDistance: {fileID: 11400000, guid: 50e1879ac2a4041a78fa2a8d3973298a,
+    type: 2}
 --- !u!4 &118306360
 Transform:
   m_ObjectHideFlags: 0

@@ -7,20 +7,30 @@ public class PlatformSpawner : MonoBehaviour
 
     public GameObject Platform;
     public FloatVariable MaxDoubleTapTime;
+    public IntVariable DragModeV;
+    public FloatVariable MaxDragRotateDistance;
 
+
+
+    enum DragMode
+    {
+        Position,
+        Rotation
+    }
 
 
     const float _overlappingCircleSize = 0.2f;
     float _lastClickTime;
     List<GameObject> _platforms = new List<GameObject>();
     GameObject _draggedObject;
+    Vector3 _previousMouseWorldPos;
 
 
     void FixedUpdate()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("Time" + (Time.time - _lastClickTime));
+            //Debug.Log("Time" + (Time.time - _lastClickTime));
             if ((Time.time - _lastClickTime) < MaxDoubleTapTime.Value)
             {
                 DoubleTap(Input.mousePosition);
@@ -35,7 +45,7 @@ public class PlatformSpawner : MonoBehaviour
 
         if(Input.GetButtonUp("Fire1"))
         {
-            Debug.Log("Released button");
+            //Debug.Log("Released button");
             _draggedObject = null;
         }
 
@@ -49,8 +59,30 @@ public class PlatformSpawner : MonoBehaviour
             return;
         
         Vector3 targetPos = GetWorldMousePosition(mousePos);
-        _draggedObject.transform.position = targetPos;
-        Debug.Log("Moved object");
+
+
+        if(DragModeV.Value == (int)DragMode.Position)
+        {
+            _draggedObject.transform.position = targetPos;
+        }
+        else
+        {
+            float distance = Vector3.Distance(_previousMouseWorldPos, targetPos);
+            float angle = (distance) * 20.0f / MaxDragRotateDistance.Value;
+            //Debug.Log("Angle: " + angle);
+
+            float dot = Vector3.Dot(_previousMouseWorldPos, targetPos);
+            if(dot < 0)
+            {
+                Debug.Log(dot);
+            }
+            _draggedObject.transform.Rotate(new Vector3(0, 0, angle));
+
+            _previousMouseWorldPos = targetPos;
+        }
+
+
+        //Debug.Log("Moved object");
 
     }
 
@@ -68,7 +100,7 @@ public class PlatformSpawner : MonoBehaviour
         }
         else
         {
-            Debug.Log("Destroying gameobject");
+            //Debug.Log("Destroying gameobject");
             Destroy(col.gameObject);
             _draggedObject = null;
         }
@@ -77,14 +109,15 @@ public class PlatformSpawner : MonoBehaviour
     void SingleTap(Vector3 mousePos)
     {
         Vector3 targetPos = GetWorldMousePosition(mousePos);
-        Debug.Log("Single Tap" + targetPos.x + " " + targetPos.y + " " + targetPos.z);
+        //Debug.Log("Single Tap" + targetPos.x + " " + targetPos.y + " " + targetPos.z);
 
 
         Collider2D col;
         if(col = GetPlatformColliderOnPoint(targetPos))
         {
-            Debug.Log("Hitted platform single tap");
+            //Debug.Log("Hitted platform single tap");
             _draggedObject = col.gameObject;
+            _previousMouseWorldPos = targetPos;
         }
 
     }
@@ -117,7 +150,7 @@ public class PlatformSpawner : MonoBehaviour
         if (plane.Raycast(ray, out dist))
         {
             Vector3 targetPos = ray.GetPoint(dist);
-            Debug.Log("Hitted" + targetPos.x + " " + targetPos.y + " " + targetPos.z);
+            //Debug.Log("Hitted" + targetPos.x + " " + targetPos.y + " " + targetPos.z);
             return targetPos;
         }
 
