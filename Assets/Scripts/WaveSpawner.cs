@@ -11,6 +11,10 @@ public class WaveSpawner : MonoBehaviour {
         float angle = AngleBetweenTwoPoints(Camera.main.WorldToViewportPoint(transform.position), pos);
         wave.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
+        Debug.Log(angle);
+        if (angle < 10 || angle > 170)
+            return;
+
         float radAngle = angle * Mathf.Deg2Rad;
         float length = 30.0f;
         Vector2 velocity = new Vector2(-Mathf.Cos(radAngle) * length, -Mathf.Sin(radAngle) * length);
