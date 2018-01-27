@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Variables.Definitions;
+
 public class TripleHeadCow : MonoBehaviour
 {
-
     public GameObject Wave;
+    public FloatVariable ProjectileSpeed;
     public string FirstWord, SecondWord, ThirdWord;
     Vector2 direction;
     public enum Direction { left, right, up, down };
@@ -52,8 +54,7 @@ public class TripleHeadCow : MonoBehaviour
     void SendLeft()
     {
         GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(-1.0f, 0.0f, 0.0f), transform.rotation);
-        float length = 10.0f;
-        Vector2 velocity = Vector2.left * length;
+        Vector2 velocity = Vector2.left * ProjectileSpeed.Value;
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;
@@ -62,8 +63,7 @@ public class TripleHeadCow : MonoBehaviour
     void SendRight()
     {
         GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, 0.0f, 0.0f), transform.rotation);
-        float length = 10.0f;
-        Vector2 velocity = Vector2.right * length;
+        Vector2 velocity = Vector2.right * ProjectileSpeed.Value;
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;
@@ -72,8 +72,7 @@ public class TripleHeadCow : MonoBehaviour
     void SendUp()
     {
         GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(0.0f, 1.0f, 0.0f), transform.rotation);
-        float length = 10.0f;
-        Vector2 velocity = Vector2.up * length;
+        Vector2 velocity = Vector2.up * ProjectileSpeed.Value;
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;
@@ -82,8 +81,7 @@ public class TripleHeadCow : MonoBehaviour
     void SendDown()
     {
         GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(0.0f, -1.0f, 0.0f), transform.rotation);
-        float length = 10.0f;
-        Vector2 velocity = Vector2.down * length;
+        Vector2 velocity = Vector2.down * ProjectileSpeed.Value;
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;

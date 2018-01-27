@@ -236,6 +236,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 114585944116843256, guid: 8d1e39343ef7e1b45b1c8ec910f0f56f,
+        type: 2}
+      propertyPath: ProjectileSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: 16074d17525914f4998aa4d0167b8190,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d1e39343ef7e1b45b1c8ec910f0f56f, type: 2}
   m_IsPrefabParent: 0

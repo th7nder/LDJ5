@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+using Variables.Definitions;
+
 public class StartingCow : MonoBehaviour
 {
     public GameObject Wave;
+    public FloatVariable ProjectileSpeed;
     Vector2 direction;
     public enum Direction { left, right, up, down };
     public Direction selectedDirection;
@@ -39,8 +42,7 @@ public class StartingCow : MonoBehaviour
         while(true)
         {
             GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(direction.x, direction.y, 0.0f), transform.rotation);
-            float length = 10.0f;
-            Vector2 velocity = direction * length;
+            Vector2 velocity = direction * ProjectileSpeed.Value;
 
             Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
             rb.velocity = velocity / 2;
