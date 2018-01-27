@@ -6,10 +6,17 @@ public class WaveSpawner : MonoBehaviour {
 
     void LaunchWaveAtPos(Vector3 pos)
     {
-        GameObject wave = (GameObject)Instantiate(Wave, transform.position, transform.rotation);
-
+        
         float angle = AngleBetweenTwoPoints(Camera.main.WorldToViewportPoint(transform.position), pos);
+        if (angle < 10 || angle > 170)
+            return;
+
+
+        GameObject wave = (GameObject)Instantiate(Wave, transform.position, transform.rotation);
         wave.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+
+        Debug.Log(angle);
+
 
         float radAngle = angle * Mathf.Deg2Rad;
         float length = 30.0f;
