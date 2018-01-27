@@ -23,7 +23,8 @@ public class PlatformSpawner : MonoBehaviour
     float _lastClickTime;
     List<GameObject> _platforms = new List<GameObject>();
     GameObject _draggedObject;
-    Vector3 _previousMouseWorldPos;
+    Vector3 _grabMouseWorldPos;
+    Vector3 _grabRotation;
 
 
     void FixedUpdate()
@@ -61,28 +62,17 @@ public class PlatformSpawner : MonoBehaviour
         Vector3 targetPos = GetWorldMousePosition(mousePos);
 
 
-        if(DragModeV.Value == (int)DragMode.Position)
+        if (DragModeV.Value == (int)DragMode.Position)
         {
             _draggedObject.transform.position = targetPos;
         }
         else
         {
-            float distance = Vector3.Distance(_previousMouseWorldPos, targetPos);
-            float angle = (distance) * 20.0f / MaxDragRotateDistance.Value;
-            //Debug.Log("Angle: " + angle);
+            float distance = targetPos.y - _grabMouseWorldPos.y;
+            float angle = distance * 360.0f / MaxDragRotateDistance.Value;
+            _draggedObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, _grabRotation.z + angle));
 
-            float dot = Vector3.Dot(_previousMouseWorldPos, targetPos);
-            if(dot < 0)
-            {
-                Debug.Log(dot);
-            }
-            _draggedObject.transform.Rotate(new Vector3(0, 0, angle));
-
-            _previousMouseWorldPos = targetPos;
         }
-
-
-        //Debug.Log("Moved object");
 
     }
 
@@ -117,7 +107,8 @@ public class PlatformSpawner : MonoBehaviour
         {
             //Debug.Log("Hitted platform single tap");
             _draggedObject = col.gameObject;
-            _previousMouseWorldPos = targetPos;
+            _grabMouseWorldPos = targetPos;
+            _grabRotation = _draggedObject.transform.rotation.eulerAngles;
         }
 
     }
