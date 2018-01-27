@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cow : MonoBehaviour
+public class StartingCow : MonoBehaviour
 {
     public GameObject Wave;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Update is called once per frame
+    void Update ()
     {
         GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(1.0f, 0.0f, 0.0f), transform.rotation);
         float length = 30.0f;
@@ -14,6 +14,6 @@ public class Cow : MonoBehaviour
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;
-        Destroy(collision.gameObject);
+
     }
 }
