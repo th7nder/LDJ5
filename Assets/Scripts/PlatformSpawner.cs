@@ -2,6 +2,13 @@
 using Variables.Definitions;
 using System.Collections.Generic;
 using System.Linq;
+
+enum DragMode
+{
+    Position,
+    Rotation
+}
+
 public class PlatformSpawner : MonoBehaviour
 {
 
@@ -12,11 +19,7 @@ public class PlatformSpawner : MonoBehaviour
 
 
 
-    enum DragMode
-    {
-        Position,
-        Rotation
-    }
+
 
 
     const float _overlappingCircleSize = 0.2f;
