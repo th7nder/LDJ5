@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4131214745270040}
   - component: {fileID: 212231059780699800}
   - component: {fileID: 61164708146555838}
-  - component: {fileID: 114499829324488068}
+  - component: {fileID: 114427185769326416}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -55,9 +55,23 @@ GameObject:
   m_Component:
   - component: {fileID: 4500499831190020}
   - component: {fileID: 212383624702084048}
-  - component: {fileID: 61199154261323244}
   m_Layer: 0
-  m_Name: New Sprite (1)
+  m_Name: CowImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1980738600625702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4453589302842038}
+  m_Layer: 0
+  m_Name: ProjectilePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,11 +84,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598226335157554}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.456699, y: -2.6850343, z: -1.23}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 4500499831190020}
   - {fileID: 4158128524035080}
+  - {fileID: 4453589302842038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -90,6 +105,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4131214745270040}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4453589302842038
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980738600625702}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.4, y: 0.058, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4131214745270040}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4500499831190020
 Transform:
@@ -150,7 +178,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04854542, y: -0.0301769}
+  m_Offset: {x: 0.04854542, y: 0.04292401}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -161,32 +189,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.52999526, y: 0.414536}
-  m_EdgeRadius: 0
---- !u!61 &61199154261323244
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1671445076537684}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.28, y: 3.45}
-    newSize: {x: 4.28, y: 3.45}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.52999526, y: 0.26833415}
   m_EdgeRadius: 0
 --- !u!102 &102210613222766026
 TextMesh:
@@ -209,7 +212,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
---- !u!114 &114499829324488068
+--- !u!114 &114427185769326416
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -223,7 +226,7 @@ MonoBehaviour:
   Wave: {fileID: 1669480032542142, guid: 3212f50645c2c4148b771bca5b44d8e8, type: 2}
   ProjectileSpeed: {fileID: 11400000, guid: 16074d17525914f4998aa4d0167b8190, type: 2}
   Word: It
-  selectedDirection: 0
+  selectedDirection: 1
 --- !u!212 &212231059780699800
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -302,7 +305,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 961d119a1630049618ea29bba50e9cdf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f87fb6c5e057435d807d4fde8832b99, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
