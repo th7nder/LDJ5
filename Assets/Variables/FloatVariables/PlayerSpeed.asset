@@ -11,9 +11,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffa52014f38435599ff232ea5f5d4c, type: 3}
   m_Name: PlayerSpeed
   m_EditorClassIdentifier: 
-  _value: 8.89
+  _value: 2.75
   ValueChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: cac19beeff73d4e699afaf2155d702f4, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
