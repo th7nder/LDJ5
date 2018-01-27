@@ -15,10 +15,17 @@ public class WaveSpawner : MonoBehaviour {
     {
         while(true)
         {
-            GameObject wave = (GameObject)Instantiate(Wave, transform.position, Quaternion.identity);
+            GameObject wave = (GameObject)Instantiate(Wave, transform.position, transform.rotation);
             Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-            rb.velocity = new Vector2(-10, -10);
-            yield return new WaitForSeconds(0.1f);
+
+            float angle = (Mathf.PI / 6);
+            float length = 30.0f;
+
+            float x = Mathf.Cos(angle) * length;
+            float y = Mathf.Sin(angle) * length;
+            rb.velocity = new Vector2(-x, -y);
+
+            yield return new WaitForSeconds(0.2f);
         }
 
     }
