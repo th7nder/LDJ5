@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4068779003169392}
   - component: {fileID: 212616768471171400}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuuImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 50468866725139446}
   - component: {fileID: 61762162423181254}
   - component: {fileID: 114513848789934218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wave
   m_TagString: Wave
   m_Icon: {fileID: 0}

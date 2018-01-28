@@ -30,15 +30,20 @@ public class PlatformSpawner : MonoBehaviour
     Vector3 _grabRotation;
 
 
+    void Start()
+    {
+        DragModeV.Value = (int)DragMode.Position;
+    }
+
     void FixedUpdate()
     {
-        if(Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.LeftControl))
         {
             DragModeV.Value = (int)DragMode.Rotation;
             //Debug.Log("fire2 down");
         }
 
-        if(Input.GetButtonUp("Fire2"))
+        if (Input.GetButtonUp("Fire2") || Input.GetKeyUp(KeyCode.LeftControl))
         {
             DragModeV.Value = (int)DragMode.Position;
             //Debug.Log("fire2 up");
@@ -60,7 +65,7 @@ public class PlatformSpawner : MonoBehaviour
             _lastClickTime = Time.time;
         }
 
-        if(Input.GetButtonUp("Fire1"))
+        if (Input.GetButtonUp("Fire1"))
         {
             //Debug.Log("Released button");
             _draggedObject = null;
@@ -74,7 +79,7 @@ public class PlatformSpawner : MonoBehaviour
     {
         if (_draggedObject == null)
             return;
-        
+
         Vector3 targetPos = GetWorldMousePosition(mousePos);
 
 
@@ -98,9 +103,8 @@ public class PlatformSpawner : MonoBehaviour
     {
         Vector3 targetPos = GetWorldMousePosition(mousePos);
 
-
         Collider2D col;
-        if(!(col = GetPlatformColliderOnPoint(targetPos)))
+        if (!(col = GetPlatformColliderOnPoint(targetPos)))
         {
             CreatePlatformAtPoint(targetPos);
         }
@@ -119,7 +123,7 @@ public class PlatformSpawner : MonoBehaviour
 
 
         Collider2D col;
-        if(col = GetPlatformColliderOnPoint(targetPos))
+        if (col = GetPlatformColliderOnPoint(targetPos))
         {
             //Debug.Log("Hitted platform single tap");
             _draggedObject = col.gameObject;
