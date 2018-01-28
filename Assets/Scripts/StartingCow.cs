@@ -39,6 +39,8 @@ public class StartingCow : MonoBehaviour
                 break;
         }
 
+        direction /= 2.0f;
+
     }
 
     IEnumerator SpawnWave()
