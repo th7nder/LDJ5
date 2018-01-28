@@ -109,7 +109,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1374254061272880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.503, y: 0.581, z: 0}
+  m_LocalPosition: {x: 0.652, y: 0.721, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4351613370147186}
@@ -122,7 +122,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971705480135280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.58, y: 2.34, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4109114485954442}
@@ -225,7 +225,7 @@ MonoBehaviour:
   Wave: {fileID: 1669480032542142, guid: 3212f50645c2c4148b771bca5b44d8e8, type: 2}
   ProjectileSpeed: {fileID: 11400000, guid: 16074d17525914f4998aa4d0167b8190, type: 2}
   FirstWord: 
-  selectedDirection: 2
+  selectedDirection: 3
 --- !u!212 &212884194605136292
 SpriteRenderer:
   m_ObjectHideFlags: 1
