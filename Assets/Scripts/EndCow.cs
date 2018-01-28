@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class EndCow : MonoBehaviour {
 
     public string EndPhrase;
-    public string NextSceneName;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Wave")) return;
@@ -30,6 +29,6 @@ public class EndCow : MonoBehaviour {
     void Success()
     {
         Debug.Log("Succes");
-        //SceneManager.LoadScene(NextSceneName);
+        SceneManager.LoadScene("MainMenu");
     }
 }
