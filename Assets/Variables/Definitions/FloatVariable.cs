@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
+#endif
 
 namespace Variables.Definitions
 {
@@ -10,7 +11,9 @@ namespace Variables.Definitions
 
     }
 
+    #if UNITY_EDITOR
     [CustomEditor(typeof(FloatVariable))]
+
     public class FloatVariableEditor : Editor
     {
         public override void OnInspectorGUI()
@@ -24,4 +27,6 @@ namespace Variables.Definitions
             }
         }
     }
+
+    #endif
 }

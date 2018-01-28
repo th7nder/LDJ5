@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
-using UnityEngine;
+#endif
 
 namespace Variables.Definitions
 {
@@ -10,6 +11,7 @@ namespace Variables.Definitions
 
     }
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(IntVariable))]
     public class IntVariableEditor : Editor
     {
@@ -24,4 +26,5 @@ namespace Variables.Definitions
             }
         }
     }
+#endif
 }
