@@ -48,7 +48,6 @@ public class Cow : MonoBehaviour
         Vector2 velocity = direction * ProjectileSpeed.Value;
 
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
-        rb.velocity = velocity / 2;
         Destroy(collision.gameObject);
         text.text = Word;
     }
