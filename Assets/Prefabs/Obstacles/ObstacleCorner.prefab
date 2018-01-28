@@ -95,11 +95,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.2633739, y: 0.28147304}
-      - {x: -0.2660998, y: 0.006641701}
-      - {x: 0.0077542663, y: 0.015576005}
+    - - {x: -0.26654404, y: 0.2719627}
+      - {x: -0.2660998, y: 0.0018865317}
+      - {x: -0.0017560497, y: -0.0002745539}
       - {x: 0.002910629, y: -0.2669473}
-      - {x: 0.008242756, y: -0.2562827}
+      - {x: 0.008242756, y: -0.26818442}
       - {x: 0.26995552, y: -0.26759565}
       - {x: 0.27411938, y: 0.27116537}
 --- !u!114 &114712048397905984
@@ -113,6 +113,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63faec241e4ff49b2a1fc480ecb48bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b0620ec71b81a4fc9b57edc4fb1cd3ea, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212722461811894260
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -83,7 +83,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0066060424, y: 0.009909272}
+  m_Offset: {x: 0.00019495189, y: 0.0022581518}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -94,7 +94,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5504788, y: 0.29313397}
+  m_Size: {x: 0.5470784, y: 0.27783173}
   m_EdgeRadius: 0
 --- !u!114 &114623670584992800
 MonoBehaviour:
@@ -107,6 +107,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63faec241e4ff49b2a1fc480ecb48bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b0620ec71b81a4fc9b57edc4fb1cd3ea, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212231634792775760
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -141,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8add5799ed0e98642877376f47a5b0b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae5bfb890e4adaf4588600f30f17cdf8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

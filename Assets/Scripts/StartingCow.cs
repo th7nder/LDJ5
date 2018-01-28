@@ -14,6 +14,10 @@ public class StartingCow : MonoBehaviour
     // Update is called once per frame
 
 
+
+    bool _isTransmitting = false;
+    int _transmitCounter;
+
     void Start()
     {
         switch (selectedDirection)
@@ -34,12 +38,13 @@ public class StartingCow : MonoBehaviour
                 direction = Vector2.down;
                 break;
         }
-        StartCoroutine("SpawnWave");
+
     }
 
     IEnumerator SpawnWave()
     {
-        while(true)
+        _transmitCounter = 1;
+        while(_transmitCounter > 0)
         {
             GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(direction.x, direction.y, 0.0f), transform.rotation);
             Vector2 velocity = direction * ProjectileSpeed.Value;
@@ -47,7 +52,28 @@ public class StartingCow : MonoBehaviour
             Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
             rb.velocity = velocity;
 
+            _transmitCounter--;
             yield return new WaitForSeconds(0.5f);
         }
+
+
+        yield return null;
+    }
+
+
+    void FixedUpdate()
+    {
+        if(Input.GetKeyDown(KeyCode.Space) && !_isTransmitting)
+        {
+            _isTransmitting = true;
+            StartCoroutine("SpawnWave");
+        }
+
+    }
+
+
+    public void OnWaveCrashedIntoWall()
+    {
+        _isTransmitting = false;
     }
 }
