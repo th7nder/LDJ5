@@ -95,7 +95,6 @@ public class DoubleHeadCow : MonoBehaviour {
         rb.velocity = _dirTopVelocity;
 
         GameObject waveSide = Instantiate(Wave, _spawnPointSide, transform.rotation);
-
         Rigidbody2D rbSide = waveSide.GetComponent<Rigidbody2D>();
         rbSide.velocity = _dirSideVelocity;
 

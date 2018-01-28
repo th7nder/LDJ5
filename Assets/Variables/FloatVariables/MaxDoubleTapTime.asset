@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ffa52014f38435599ff232ea5f5d4c, type: 3}
   m_Name: MaxDoubleTapTime
   m_EditorClassIdentifier: 
-  _value: 0.2
+  _value: 0.26
   ValueChangedEvent:
     m_PersistentCalls:
       m_Calls: []
