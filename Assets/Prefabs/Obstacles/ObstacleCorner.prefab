@@ -116,7 +116,7 @@ MonoBehaviour:
   DeathEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 8ea23624ca6f40c4a978e1881be0d933, type: 2}
+      - m_Target: {fileID: 11400000, guid: b0620ec71b81a4fc9b57edc4fb1cd3ea, type: 2}
         m_MethodName: Raise
         m_Mode: 1
         m_Arguments:
