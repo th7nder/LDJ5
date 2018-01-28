@@ -50,7 +50,6 @@ public class Cow : MonoBehaviour
         Rigidbody2D rb = wave.GetComponent<Rigidbody2D>();
         rb.velocity = velocity / 2;
         Destroy(collision.gameObject);
-
         text.text = Word;
     }
 }
