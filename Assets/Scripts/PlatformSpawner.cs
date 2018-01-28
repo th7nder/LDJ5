@@ -33,26 +33,24 @@ public class PlatformSpawner : MonoBehaviour
     void Start()
     {
         DragModeV.Value = (int)DragMode.Position;
+        _draggedObject = null;
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetButtonDown("Fire2") || Input.GetKeyDown(KeyCode.Z))
         {
             DragModeV.Value = (int)DragMode.Rotation;
-            //Debug.Log("fire2 down");
         }
 
-        if (Input.GetButtonUp("Fire2") || Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetButtonUp("Fire2") || Input.GetKeyUp(KeyCode.Z))
         {
             DragModeV.Value = (int)DragMode.Position;
-            //Debug.Log("fire2 up");
+            _draggedObject = null;
         }
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //Debug.Log("fire1 down");
-            //Debug.Log("Time" + (Time.time - _lastClickTime));
             if ((Time.time - _lastClickTime) < MaxDoubleTapTime.Value)
             {
                 DoubleTap(Input.mousePosition);
@@ -67,7 +65,6 @@ public class PlatformSpawner : MonoBehaviour
 
         if (Input.GetButtonUp("Fire1"))
         {
-            //Debug.Log("Released button");
             _draggedObject = null;
         }
 
@@ -79,6 +76,7 @@ public class PlatformSpawner : MonoBehaviour
     {
         if (_draggedObject == null)
             return;
+
 
         Vector3 targetPos = GetWorldMousePosition(mousePos);
 
@@ -110,7 +108,6 @@ public class PlatformSpawner : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Destroying gameobject");
             Destroy(col.gameObject);
             _draggedObject = null;
         }
@@ -119,13 +116,11 @@ public class PlatformSpawner : MonoBehaviour
     void SingleTap(Vector3 mousePos)
     {
         Vector3 targetPos = GetWorldMousePosition(mousePos);
-        //Debug.Log("Single Tap" + targetPos.x + " " + targetPos.y + " " + targetPos.z);
-
+    
 
         Collider2D col;
         if (col = GetPlatformColliderOnPoint(targetPos))
         {
-            //Debug.Log("Hitted platform single tap");
             _draggedObject = col.gameObject;
             _grabMouseWorldPos = targetPos;
             _grabRotation = _draggedObject.transform.rotation.eulerAngles;
@@ -160,7 +155,6 @@ public class PlatformSpawner : MonoBehaviour
         if (plane.Raycast(ray, out dist))
         {
             Vector3 targetPos = ray.GetPoint(dist);
-            //Debug.Log("Hitted" + targetPos.x + " " + targetPos.y + " " + targetPos.z);
             return targetPos;
         }
 

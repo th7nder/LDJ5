@@ -43,7 +43,7 @@ public class StartingCow : MonoBehaviour
 
     IEnumerator SpawnWave()
     {
-        _transmitCounter = 15;
+        _transmitCounter = 1;
         while(_transmitCounter > 0)
         {
             GameObject wave = (GameObject)Instantiate(Wave, transform.position + new Vector3(direction.x, direction.y, 0.0f), transform.rotation);
@@ -56,7 +56,6 @@ public class StartingCow : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
-        _isTransmitting = false;
 
         yield return null;
     }
@@ -70,5 +69,11 @@ public class StartingCow : MonoBehaviour
             StartCoroutine("SpawnWave");
         }
 
+    }
+
+
+    public void OnWaveCrashedIntoWall()
+    {
+        _isTransmitting = false;
     }
 }
