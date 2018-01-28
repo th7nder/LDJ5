@@ -17,6 +17,8 @@ public class EndCow : MonoBehaviour {
 
     void EndLevel()
     {
+        GameObject canvas = GameObject.Find("EndLevel");
+        canvas.GetComponent<Canvas>().enabled = true;
         //show endfield
     }
 
