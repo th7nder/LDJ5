@@ -5,17 +5,26 @@ using UnityEngine.Events;
 
 public class GuiController : MonoBehaviour
 {
-    [SerializeField] public List<AudioClip> MooSounds;
+    private Animator _animator;
 
-    public UnityEvent PlayRandomMooSoundEvent;
+    private void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public void GoToSelectLevel()
+    {
+
+    }
+
+    public void GoToCredits()
+    {
+
+    }
+
+    public void QuitGame()
+    {
+        Debug.LogWarning("Quitting app.");
+        Application.Quit();
+    }
 }
